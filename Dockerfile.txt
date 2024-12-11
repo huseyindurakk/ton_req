@@ -1,0 +1,15 @@
+# 1. Python 3.9 (veya daha yeni) bir Docker image kullan
+FROM python:3.9
+
+# 2. Uygulama dosyalarının çalışacağı klasör
+WORKDIR /app
+
+# 3. Gereken dosyaları kopyala
+COPY requirements.txt requirements.txt
+COPY bot_server.py bot_server.py
+
+# 4. Bağımlılıkları yükle
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Flask uygulamasını çalıştır
+CMD ["python", "bot_server.py"]
